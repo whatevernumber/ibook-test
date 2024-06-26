@@ -156,8 +156,11 @@ class BookController extends Controller
             $book->savedBy()->detach();
             $book->addedBy()->detach();
             $book->boughtBy()->detach();
-            $imageHelper->delete($book->image->image, 'public', env('BOOK_COVER_PATH'));
-            $book->image()->delete();
+
+            if ($book->image) {
+                $imageHelper->delete($book->image->image, 'public', env('BOOK_COVER_PATH'));
+                $book->image()->delete();
+            }
         }
 
         // Wrapped in a transaction to avoid a book being saved without its author/genre

@@ -159,7 +159,7 @@ class UserTest extends TestCase
     /**
      * User can't delete another user's account
      */
-    public function test_user_can_be_deleted_by_another_user(): void
+    public function test_user_cannot_be_deleted_by_another_user(): void
     {
         $user = User::factory()->create();
         $anotherUser = User::factory()->create();
@@ -180,7 +180,7 @@ class UserTest extends TestCase
     /**
      * Admin can delete their account
      */
-    public function test_admin_can_be_delete_another_user_account(): void
+    public function test_admin_can_delete_another_user_account(): void
     {
         $user = User::factory()->admin()->create();
         $anotherUser = User::factory()->create();
